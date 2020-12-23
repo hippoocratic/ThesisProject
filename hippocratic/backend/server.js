@@ -10,6 +10,9 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+//set up routes
+app.use('/doctors',require("./routes/doctorRouter"))
+app.use('/infos', require('./routes/infosRouter'))
 
 
 const PORT = process.env.PORT || 3000;
@@ -24,8 +27,4 @@ mongoose.connect(process.env.MONGODB_CONNRCTION_STRING, {useNewUrlParser:true, u
     if(err) throw err;
     console.log("MongoDB connection established")
 });
-
-//set up routes
-app.use('/doctors',require("./routes/doctorRouter"))
-app.use('infos', require('./routes/infosRouter'))
 
