@@ -1,6 +1,7 @@
 const router = require("express").Router();
 let Info = require("../models/infoModel");
 
+
 router.route("/").get((req, res) => {
   Info
     .find()

@@ -9,6 +9,7 @@ import Footer from "./components/Footer/Footer";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import DoctorContext from "./context/DoctorContext";
+import CreateInfo from './components/create-info';
 
 export default function App() {
   const [doctorData, setDoctorData] = useState({
@@ -52,6 +53,7 @@ export default function App() {
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
+              <Route path ="/add" component={CreateInfo}/>
             </Switch>
            
           </div>
