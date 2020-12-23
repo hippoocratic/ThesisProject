@@ -6,11 +6,11 @@ const auth = require("../middleware/auth");
 
 router.post("/register", async (req, res) => {
   try {
-    let { email, password, PasswordCheck, displayName } = req.body;
-
+    let { email, password, passwordCheck, displayName } = req.body;
+console.log(passwordCheck, 1)
     //validation
-    if (!email || !password || !PasswordCheck)
-      return res
+    if (!email || !password)
+      return res  
         .status(400)
         .json({ msg: " Not all fields have been entered."});
 
@@ -19,7 +19,7 @@ router.post("/register", async (req, res) => {
         .status(400)
         .json({ msg: " The password need to be at least 5 characters long. " });
 
-    if (password !== PasswordCheck)
+    if (password !== passwordCheck)
       return res
         .status(400)
         .json({ msg: "Enter the same password twice for veification. " });
