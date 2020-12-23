@@ -6,20 +6,20 @@ const auth = require("../middleware/auth");
 
 router.post("/register", async (req, res) => {
   try {
-    let { email, password, passwordcheck, displayName } = req.body;
+    let { email, password, PasswordCheck, displayName } = req.body;
 
     //validation
-    if (!email || !password || !passwordcheck)
+    if (!email || !password || !PasswordCheck)
       return res
         .status(400)
-        .json({ msg: " Not all fields have been entered. " });
+        .json({ msg: " Not all fields have been entered."});
 
     if (password.length < 5)
       return res
         .status(400)
         .json({ msg: " The password need to be at least 5 characters long. " });
 
-    if (password !== passwordcheck)
+    if (password !== PasswordCheck)
       return res
         .status(400)
         .json({ msg: "Enter the same password twice for veification. " });
@@ -64,48 +64,54 @@ router.post("/login", async (req, res) => {
 
     const isMatch = await bcrypt.compare(password, doctor.password);
     if (!isMatch) return res.status(400).json({ msg: "Invalid credentails" });
+
     const token = jwt.sign({ id: doctor._id }, process.env.JWT_SECRET);
     res.json({
       token,
       doctor: {
         id: doctor._id,
         displayName: doctor.displayName,
-        email: doctor.email,
+       
       },
     });
-  
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 });
 
 // To Delete An Account if you are logged in .
-router.delete("/delete",auth, async(req , res) => {
- try{
-   const deleteDoctor= await Doctor.findByIdAndDelete(req.doctor);
-   res.json(deleteDoctor);
-
- }catch(err){
-   res.status(500).json({error:err.message});
- }
+router.delete("/delete", auth, async (req, res) => {
+  try {
+    const deleteDoctor = await Doctor.findByIdAndDelete(req.doctor);
+    res.json(deletedDoctor);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
-router.post("/tokenIsValid", async(req, res) => {
-  try{
-    const token =req.header("x-auth-token");
-    if(!token)return res.json(false);
+router.post("/tokenIsValid", async (req, res) => {
+  try {
+    const token = req.header("x-auth-token");
+    if (!token) return res.json(false);
 
     const verified = jwt.verify(token, process.env.JWT_SECRET);
-    if(!verified) return res.json(false);
+    if (!verified) return res.json(false);
 
     const doctor = await Doctor.findById(verified.id);
-    if(!doctor)return res.json(false);
+    if (!doctor) return res.json(false);
 
     return res.json(true);
-  }catch(err){
-    res.status(500).json({error : err.message});
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
-})
+});
 
+router.get("/", auth, async (req, res) => {
+  const doctor = await Doctor.findById(req.doctor);
+  res.json({
+    displayName: doctor.displayName,
+    id: doctor._id,
+  });
+});
 
 module.exports = router;
