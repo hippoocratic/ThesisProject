@@ -10,6 +10,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
+
 const PORT = process.env.PORT || 3000;
 
 //StartUp the server
@@ -25,4 +27,5 @@ mongoose.connect(process.env.MONGODB_CONNRCTION_STRING, {useNewUrlParser:true, u
 
 //set up routes
 app.use('/doctors',require("./routes/doctorRouter"))
+app.use('infos', require('./routes/infosRouter'))
 
