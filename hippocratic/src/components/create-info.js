@@ -55,16 +55,16 @@ export default class CreateInfo extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    const data = {
+    const dava = {
       overview: this.state.overview,
       conferences: this.state.conferences,
       insurance_companies: this.state.insurance_companies,
       phone: this.state.phone,
-      Location: this.state.Location,
+      location: this.state.location,
     };
-    console.log(data);
-    axios
-      .post("http://localhost:3000/infos/add", data)
+       
+    axios.post('http://localhost:3000/infos/add', dava)
+    
       .then(res=> console.log(res.data));
     this.setState({
       overview: "",
@@ -73,11 +73,12 @@ export default class CreateInfo extends Component {
       phone: "",
       location: "",
     });
+    console.log(dava);
   }
   render() {
     return (
       <div>
-        <h2> Write your information </h2>
+        <h3> Write your information </h3>
         <form className="align-bottom" onSubmit={this.onSubmit}>
           <label>overview </label>
           <input
