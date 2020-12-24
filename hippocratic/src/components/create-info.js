@@ -6,9 +6,7 @@ export default class CreateInfo extends Component {
     super(props);
     this.onChangeOverview = this.onChangeOverview.bind(this);
     this.onChangeConferences = this.onChangeConferences.bind(this);
-    this.onChangeInsurance_companies = this.onChangeInsurance_companies.bind(
-      this
-    );
+    this.onChangeInsurance_companies = this.onChangeInsurance_companies.bind(this);
     this.onChangePhone = this.onChangePhone.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
