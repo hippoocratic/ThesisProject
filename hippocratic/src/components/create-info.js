@@ -55,7 +55,7 @@ export default class CreateInfo extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    const dava = {
+    const input = {
       overview: this.state.overview,
       conferences: this.state.conferences,
       insurance_companies: this.state.insurance_companies,
@@ -63,7 +63,7 @@ export default class CreateInfo extends Component {
       location: this.state.location,
     };
        
-    axios.post('http://localhost:3000/infos/add', dava)
+    axios.post('http://localhost:3000/infos/add', input)
     
       .then(res=> console.log(res.data));
     this.setState({
@@ -73,7 +73,7 @@ export default class CreateInfo extends Component {
       phone: "",
       location: "",
     });
-    console.log(dava);
+    console.log(input);
   }
   render() {
     return (

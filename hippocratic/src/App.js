@@ -10,6 +10,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import DoctorContext from "./context/DoctorContext";
 import CreateInfo from './components/create-info';
+import EditInfo from './components/edit-info';
 
 export default function App() {
   const [doctorData, setDoctorData] = useState({
@@ -54,6 +55,7 @@ export default function App() {
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
               <Route path ="/add" component={CreateInfo}/>
+              <Route path ='update'component={EditInfo}/>
             </Switch>
            
           </div>
