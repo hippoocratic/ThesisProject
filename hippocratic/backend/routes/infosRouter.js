@@ -28,7 +28,6 @@ router.route("/add").post((req, res) => {
 });
 
 router.route("/:id").get((req, res) => {
-  console.log(req.params);
   Info.findById(req.params.id)
     .then((info) => res.json(info))
     .catch((err) => res.status(400).json("Error:" + err));

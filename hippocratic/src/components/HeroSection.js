@@ -34,7 +34,7 @@ function HeroSection({
                   {headline}
                 </h1>
                 <p className={lightTextdesc ? 'home__hero-subtitle': 'home__hero-subtitle dark'}>{Description}</p>
-                <Link to='/sign-up'>
+                <Link to='/register'>
                   <Button buttonSize='btn--wide' buttonColor='blue'>{buttonLabel}</Button>
                 </Link>
 
@@ -42,7 +42,7 @@ function HeroSection({
             </div>
             <div className="col">
               <div className="home__hero-text-wrapper">
-                <img src ={img} alt={alt} className="home__hero.img"/>
+                <img src ={"https://i.pinimg.com/564x/fe/0a/90/fe0a90c8608a537105fbf47b1b850550.jpg"} alt={alt} className="home__hero.img"/>
               </div>
 
             </div>

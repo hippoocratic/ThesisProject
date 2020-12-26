@@ -2,6 +2,7 @@ import React , {Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
+
 const Input = props => (
     <tr>
         <td>{props.input.overview}</td>
@@ -15,7 +16,7 @@ const Input = props => (
     </tr>
 )
 
-export default class Profile extends Component{
+export default class profile extends Component{
     constructor(props){
         super(props);
         this.state ={inputs:[]};
@@ -32,7 +33,8 @@ export default class Profile extends Component{
     }
     inputList(){
         return this.state.inputs.map(currentinput => {
-            return <Input input={currentinput}/>;
+          console.log(currentinput._id)
+            return <Input input={currentinput}  key={currentinput._id}/>;
         })
     }
 
