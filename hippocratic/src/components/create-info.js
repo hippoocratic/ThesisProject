@@ -49,7 +49,7 @@ export default class CreateInfo extends Component {
     });
   }
   handleClick() {
-    window.location = "/home";
+    window.location = "/profile";
   }
   onSubmit(e) {
     e.preventDefault();
@@ -129,13 +129,7 @@ export default class CreateInfo extends Component {
           />
 
           <div className="col-sm-10">
-            <input
-              type="submit"
-              value="Create"
-              className="btn btn-outline-info"
-              data-toggle="tooltip"
-              title="create task"
-            />
+            
             <button onClick={this.handleClick.bind(this)}>ADD </button>
           </div>
         </form>

@@ -9,7 +9,8 @@ export default function Home () {
     const { doctorData } = useContext(DoctorContext);
     return (
         
-        <div className="page">
+        <div className="page" >
+           
             {doctorData.doctor ? (
                 <h1> Welcome {doctorData.doctor.displayName}</h1>
             ) : (

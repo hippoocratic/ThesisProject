@@ -1,13 +1,13 @@
 import React, {useContext} from 'react';
-import {useHistory} from "react-router-dom";
+// import {useHistory} from "react-router-dom";
 import DocterContext from '../../context/DoctorContext'
 
 export default function AuthOptions() {
     const {doctorData, setDoctorData}= useContext(DocterContext);
-    const history = useHistory();
+    // const history = useHistory();
 
-    const register = ()=> history.push("/register");
-    const login = ()=> history.push("/login");
+    // const register = ()=> history.push("/register");
+    // const login = ()=> history.push("/login");
     const logout = () => {
         setDoctorData({
           token: undefined,
@@ -22,8 +22,8 @@ export default function AuthOptions() {
             <button onClick={logout}>Log out</button>
           ) : (
             <>
-              <button onClick={register}>Register</button>
-              <button onClick={login}>Log in</button>
+              {/* <button onClick={register}>Register</button>
+              <button onClick={login}>Log in</button> */}
             </>
           )}
         </nav>

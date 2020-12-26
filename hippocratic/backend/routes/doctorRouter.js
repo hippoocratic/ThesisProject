@@ -17,12 +17,12 @@ console.log(passwordCheck, 1)
     if (password.length < 5)
       return res
         .status(400)
-        .json({ msg: " The password need to be at least 5 characters long. " });
+        .json({ msg: " The password need to be at least 5 characters long. "});
 
     if (password !== passwordCheck)
       return res
         .status(400)
-        .json({ msg: "Enter the same password twice for veification. " });
+        .json({ msg: "Enter the same password twice for veification. "});
 
     const existingDoctor = await Doctor.findOne({ email: email });
     if (existingDoctor)
