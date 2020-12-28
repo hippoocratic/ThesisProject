@@ -5,7 +5,7 @@ import DocterContext from '../../context/DoctorContext'
 export default function AuthOptions() {
     const {doctorData, setDoctorData}= useContext(DocterContext);
     // const history = useHistory();
-
+// 
     // const register = ()=> history.push("/register");
     // const login = ()=> history.push("/login");
     const logout = () => {

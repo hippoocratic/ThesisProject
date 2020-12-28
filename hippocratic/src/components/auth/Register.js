@@ -39,15 +39,12 @@ export default function Register() {
   };
 
   return (
-    <form>
-      
     <div className="page">
       <h2>register</h2>
       {error && (
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
       )}
       <form className="form" onSubmit={submit}>
-      
         <label htmlFor="register-email">Email</label>
         <input
           id="register-email"
@@ -77,6 +74,5 @@ export default function Register() {
         <input type="submit" value="Register" />
       </form>
     </div>
-    </form>
   );
 }
