@@ -152,6 +152,6 @@ export default class EditInfo extends Component {
         </div>
         </form>
       </div>
-    );
+    )
   }
 }

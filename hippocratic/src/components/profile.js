@@ -36,15 +36,13 @@ export default class profile extends Component {
       return <Input input={currentinput} key={currentinput._id} />;
     });
   }
-  handleClick() {
-    window.location = "/profile";
-  }
+
 
   render() {
     return (
       <div>
         <h3>Profile page </h3>
-        <button onClick={this.handleClick.bind(this)}>ADD </button>
+       
        
         <table className="table">
           <tr>
