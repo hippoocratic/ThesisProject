@@ -18,6 +18,7 @@ import profile from "./components/profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import notfound from "./components/notfound";
 import AuthOptions from "./components/auth/AuthOptions";
+import calender from "./components/calender";
 
 export default function App() {
   const [doctorData, setDoctorData] = useState({
@@ -61,18 +62,16 @@ export default function App() {
           <AuthOptions/>
           <div className="container">
             <Switch>
-              <ProtectedRoute exact path="/add" component={CreateInfo} isAuth={localStorage.length>0}/> 
+              {/* <ProtectedRoute exact path="/add" component={CreateInfo} isAuth={localStorage.length>0}/>  */}
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
-              {/* <Route path ="/add" component={CreateInfo}/> */}
-              <Route path ='/update'component={EditInfo}/>
+              <Route path ="/add" component={CreateInfo}/>
+              <Route path ='/edit'component={EditInfo}/>
               <Route path ='/notfound' component={notfound}/>
               <Route path ='/profile' component={profile}/>
-              
-              
-
             </Switch>
+            <calender/>
            
           </div>
         </DoctorContext.Provider>

@@ -6,9 +6,7 @@ export default class EditInfo extends Component {
     super(props);
     this.onChangeOverview = this.onChangeOverview.bind(this);
     this.onChangeConferences = this.onChangeConferences.bind(this);
-    this.onChangeInsurance_companies = this.onChangeInsurance_companies.bind(
-      this
-    );
+    this.onChangeInsurance_companies = this.onChangeInsurance_companies.bind(this);
     this.onChangePhone = this.onChangePhone.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -19,72 +17,77 @@ export default class EditInfo extends Component {
       insurance_companies: "",
       phone: "",
       location: "",
-    };
+    }
   }
   componentDidMount() {
     axios
-      .get("http://localhost:5000/infos/" + this.props.match.params.id)
-      .then((response) => {
+      .get("http://localhost:5000/infos/"+this.props.match.params.id)
+      .then(response => {
         this.setState({
           overview: response.data.overview,
           conferences: response.data.conferences,
           insurance_companies: response.data.insurance_companies,
           phone: response.data.phone,
           location: response.data.location,
-        });
-      });
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
   onChangeOverview(e) {
     this.setState({
-      overview: e.target.value,
-    });
+      overview: e.target.value
+    })
   }
   onChangeConferences(e) {
     this.setState({
-      conferences: e.target.value,
-    });
+      conferences: e.target.value
+    })
   }
 
   onChangeInsurance_companies(e) {
     this.setState({
-      insurance_companies: e.target.value,
-    });
+      insurance_companies: e.target.value
+    })
   }
   onChangePhone(e) {
     this.setState({
-      phone: e.target.value,
-    });
+      phone: e.target.value
+    })
   }
-
   onChangeLocation(e) {
     this.setState({
-      location: e.target.value,
-    });
+      location: e.target.value
+    })
   }
   onSubmit(e) {
     e.preventDefault();
-
     const input = {
       overview: this.state.overview,
       conferences: this.state.conferences,
       insurance_companies: this.state.insurance_companies,
       phone: this.state.phone,
       location: this.state.location,
-    };
-    console.log(input);
+    }
+    console.log(this.props)
     axios
       .post(
-        "http://localhost:3000/infos/update" / +this.props.match.params.id,
+        "http://localhost:3000/infos/update/"+this.props.match.params.id,
         input
       )
-      .then((res) => console.log(res.data));
-    window.location = "/";
+      .then(res => console.log(res.data))
+      .catch(function (error) {
+        console.log(error);
+      });
+    window.location = "/profile";
   }
   render() {
     return (
       <div>
-        <h3>Edit</h3>
+        <h3 className="font-weight-bold deep-purple-text" style={{fontFamily:"Courier"}}>Edit </h3>
         <form onSubmit={this.onSubmit}>
+        <div className="form-group">
           <label>overview </label>
           <input
             placeholder="write about yourself"
@@ -94,7 +97,7 @@ export default class EditInfo extends Component {
             value={this.state.overview}
             onChange={this.onChangeOverview}
           />
-
+</div>
           <label>conferences </label>
           <input
             placeholder="write about yourself"
@@ -135,7 +138,7 @@ export default class EditInfo extends Component {
             onChange={this.onChangeLocation}
           />
 
-          <div className="col-sm-10">
+          {/* <div className="col-sm-10">
             <input
               type="submit"
               value="Create"
@@ -143,9 +146,9 @@ export default class EditInfo extends Component {
               data-toggle="tooltip"
               title="create task"
             />
-          </div>
+          </div> */}
           <div className="form-group">
-          <input type="submit" value="Edit" className="btn btn-primary" />     
+        <input type="submit" value="EditInput" className="btn btn-primary btn btn-outline-#4a148c purple darken-4" />
         </div>
         </form>
       </div>

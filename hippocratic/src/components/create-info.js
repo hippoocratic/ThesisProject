@@ -1,5 +1,7 @@
-import React, { Component } from "react";
+import React, { Component} from "react";
 import axios from "axios";
+import calender from "./calender";
+
 
 export default class CreateInfo extends Component {
   constructor(props) {
@@ -10,6 +12,7 @@ export default class CreateInfo extends Component {
     this.onChangePhone = this.onChangePhone.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+   
     this.state = {
       overview: "",
       conferences: "",
@@ -73,6 +76,9 @@ export default class CreateInfo extends Component {
     });
     console.log(input);
   }
+
+ 
+
   render() {
     return (
       <div>
@@ -133,6 +139,7 @@ export default class CreateInfo extends Component {
             <button onClick={this.handleClick.bind(this)}>ADD </button>
           </div>
         </form>
+        <calender/>
       </div>
     );
   }

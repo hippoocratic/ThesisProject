@@ -7,7 +7,6 @@ const auth = require("../middleware/auth");
 router.post("/register", async (req, res) => {
   try {
     let { email, password, passwordCheck, displayName } = req.body;
-console.log(passwordCheck, 1)
     //validation
     if (!email || !password)
       return res  
