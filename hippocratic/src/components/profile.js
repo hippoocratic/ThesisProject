@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Input = props => (
+
+const InfoInput = props => (
   <tr>
+    <td>{props.input.inputName}</td>
     <td>{props.input.overview}</td>
     <td>{props.input.conferences}</td>
     <td>{props.input.insurance_companies}</td>
@@ -30,10 +32,10 @@ export default class profile extends Component {
         console.log(error);
       });
   }
-  inputList() {
+  inputsList() {
     return this.state.inputs.map((currentinput) => {
       console.log(currentinput._id);
-      return <Input input={currentinput} key={currentinput._id} />;
+      return <InfoInput input={currentinput} key={currentinput._id} />;
     });
   }
 
@@ -42,17 +44,18 @@ export default class profile extends Component {
     return (
       <div>
         <h3>Profile page </h3>
-       
+      
        
         <table className="table">
           <tr>
+          <th>Name</th>
             <th>Overview</th>
             <th>Conferences</th>
             <th>insurance_companies</th>
             <th>Phone</th>
             <th>Location</th>
           </tr>
-          <tbody>{this.inputList()}</tbody>
+          <tbody>{this.inputsList()}</tbody>
         </table>
       </div>
     );
