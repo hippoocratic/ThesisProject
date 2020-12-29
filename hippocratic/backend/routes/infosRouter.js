@@ -8,6 +8,7 @@ router.route("/").get((req, res) => {
 });
 
 router.route("/add").post((req, res) => {
+  const name = req.body.name;
   const overview = req.body.overview;
   const conferences = req.body.conferences;
   const insurance_companies = req.body.insurance_companies;
@@ -15,6 +16,7 @@ router.route("/add").post((req, res) => {
   const location = req.body.location;
 
   const newInfo = new Info({
+    name,
     overview,
     conferences,
     insurance_companies,
@@ -42,6 +44,7 @@ router.route("/:id").delete((req, res) => {
 router.route("/update/:id").post((req, res) => {
   Info.findById(req.params.id)
     .then((info) => {
+      info.name = req.body.name;
       info.overview = req.body.overview;
       info.insurance_companies = req.body.insurance_companies;
       info.conferences = req.body.conferences;

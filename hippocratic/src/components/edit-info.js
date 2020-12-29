@@ -4,6 +4,7 @@ import axios from "axios";
 export default class EditInfo extends Component {
   constructor(props) {
     super(props);
+    this.onChangeName = this.onChangeName.bind(this);
     this.onChangeOverview = this.onChangeOverview.bind(this);
     this.onChangeConferences = this.onChangeConferences.bind(this);
     this.onChangeInsurance_companies = this.onChangeInsurance_companies.bind(this);
@@ -12,6 +13,7 @@ export default class EditInfo extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
+      name:"",
       overview: "",
       conferences: "",
       insurance_companies: "",
@@ -24,6 +26,7 @@ export default class EditInfo extends Component {
       .get("http://localhost:5000/infos/"+this.props.match.params.id)
       .then(response => {
         this.setState({
+          name: response.data.name,
           overview: response.data.overview,
           conferences: response.data.conferences,
           insurance_companies: response.data.insurance_companies,
@@ -34,6 +37,11 @@ export default class EditInfo extends Component {
       .catch(function (error) {
         console.log(error);
       })
+  }
+  onChangeName(e) {
+    this.setState({
+      name: e.target.value
+    })
   }
   onChangeOverview(e) {
     this.setState({
@@ -88,6 +96,15 @@ export default class EditInfo extends Component {
         <h3 className="font-weight-bold deep-purple-text" style={{fontFamily:"Courier"}}>Edit </h3>
         <form onSubmit={this.onSubmit}>
         <div className="form-group">
+        <label>name </label>
+          <input
+            placeholder="write about yourself"
+            type="text"
+            required
+            className="form-control"
+            value={this.state.name}
+            onChange={this.onChangeName}
+          />
           <label>overview </label>
           <input
             placeholder="write about yourself"
@@ -138,15 +155,7 @@ export default class EditInfo extends Component {
             onChange={this.onChangeLocation}
           />
 
-          {/* <div className="col-sm-10">
-            <input
-              type="submit"
-              value="Create"
-              className="btn btn-outline-info"
-              data-toggle="tooltip"
-              title="create task"
-            />
-          </div> */}
+       
           <div className="form-group">
         <input type="submit" value="EditInput" className="btn btn-primary btn btn-outline-#4a148c purple darken-4" />
         </div>

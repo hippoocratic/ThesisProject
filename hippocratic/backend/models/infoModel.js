@@ -3,6 +3,8 @@ const mongoose =require('mongoose');
 
 
 const infoSchema = new mongoose.Schema({
+
+    name:{type: String, required: true, maxlength:120},
     overview:{type: String, required: true, maxlength:120},
     conferences:{type: String, maxlength:120},
     insurance_companies:{type: String, maxlength:120},

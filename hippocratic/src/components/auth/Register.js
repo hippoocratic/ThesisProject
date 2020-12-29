@@ -20,7 +20,7 @@ export default function Register() {
 
     try {
       const newDoctor = { email, password, passwordCheck, displayName };
-      console.log(newDoctor);
+      
       await Axios.post("http://localhost:3000/doctors/register", newDoctor);
       const loginRes = await Axios.post("http://localhost:3000/doctors/login", {
         email,

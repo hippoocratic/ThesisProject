@@ -1,11 +1,12 @@
 import React, { Component} from "react";
 import axios from "axios";
-import calender from "./calender";
+
 
 
 export default class CreateInfo extends Component {
   constructor(props) {
     super(props);
+    this.onChangeName = this.onChangeName.bind(this);
     this.onChangeOverview = this.onChangeOverview.bind(this);
     this.onChangeConferences = this.onChangeConferences.bind(this);
     this.onChangeInsurance_companies = this.onChangeInsurance_companies.bind(this);
@@ -14,6 +15,7 @@ export default class CreateInfo extends Component {
     this.onSubmit = this.onSubmit.bind(this);
    
     this.state = {
+      name:"",
       overview: "",
       conferences: "",
       insurance_companies: "",
@@ -21,6 +23,11 @@ export default class CreateInfo extends Component {
       location: "",
       infos: [],
     };
+  }
+  onChangeName(e) {
+    this.setState({
+      name: e.target.value,
+    });
   }
   onChangeOverview(e) {
     this.setState({
@@ -57,6 +64,7 @@ export default class CreateInfo extends Component {
   onSubmit(e) {
     e.preventDefault();
     const input = {
+      name: this.state.name,
       overview: this.state.overview,
       conferences: this.state.conferences,
       insurance_companies: this.state.insurance_companies,
@@ -68,6 +76,7 @@ export default class CreateInfo extends Component {
     
       .then(res=> console.log(res.data));
     this.setState({
+      name:"",
       overview: "",
       conferences: "",
       insurance_companies: "",
@@ -84,6 +93,15 @@ export default class CreateInfo extends Component {
       <div>
         <h3> Write your information </h3>
         <form className="align-bottom" onSubmit={this.onSubmit}>
+        <label>name </label>
+          <input
+            placeholder="write about yourself"
+            type="text"
+            required
+            className="form-control"
+            value={this.state.name}
+            onChange={this.onChangeName}
+          />
           <label>overview </label>
           <input
             placeholder="write about yourself"
@@ -133,6 +151,7 @@ export default class CreateInfo extends Component {
             value={this.state.location}
             onChange={this.onChangeLocation}
           />
+
 
           <div className="col-sm-10">
             
