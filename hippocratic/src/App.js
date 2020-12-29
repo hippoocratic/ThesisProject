@@ -14,7 +14,7 @@ import DoctorContext from "./context/DoctorContext";
 import CreateInfo from './components/create-info';
 import EditInfo from './components/edit-info';
 import profile from "./components/profile";
-// import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/ProtectedRoute";
 import notfound from "./components/notfound";
 import AuthOptions from "./components/auth/AuthOptions";
 import HomePa from "./components/patient/HomePa";
@@ -65,11 +65,11 @@ export default function App() {
          
           <div className="container">
             <Switch>
-              {/* <ProtectedRoute exact path="/add" component={CreateInfo} isAuth={localStorage.length>0}/>  */}
+              <ProtectedRoute exact path="/add" component={CreateInfo} isAuth={localStorage.length>0}/> 
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
-              <Route path ="/add" component={CreateInfo}/>
+              {/* <Route path ="/add" component={CreateInfo}/> */}
               <Route path ='/edit'component={EditInfo}/>
               <Route path ='/notfound' component={notfound}/>
               <Route path ='/profile' component={profile}/>
