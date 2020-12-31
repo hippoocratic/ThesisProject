@@ -19,6 +19,7 @@ import notfound from "./components/notfound";
 import AuthOptions from "./components/auth/AuthOptions";
 import HomePa from "./components/patient/HomePa";
 import doctors from "./components/patient/doctors";
+import appointment from "./components/appointment";
 
 export default function App() {
   const [doctorData, setDoctorData] = useState({
@@ -73,6 +74,7 @@ export default function App() {
               <Route path="/profile" component={profile} />
               <Route path="/homePage" component={HomePa} />
               <Route path="/doctors" component={doctors} />
+              <Route path="/appointment" component={appointment}/>
             </Switch>
             <calender />
           </div>
