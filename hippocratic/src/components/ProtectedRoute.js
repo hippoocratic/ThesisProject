@@ -8,6 +8,7 @@ function ProtectedRoute({isAuth : isAuth, component:Component, ...rest}){
         {...rest} 
         render={(props)=>{
 if (isAuth){
+    console.log(1)
     return <Component/>;
 }
 else
