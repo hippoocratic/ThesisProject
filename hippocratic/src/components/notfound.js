@@ -3,7 +3,8 @@ import React from 'react'
 export default function notfound () {
     return (
         <div>
-            hdfhdfhdffhdfhdfh
+            <img src ={"https://cdn.dribbble.com/users/718859/screenshots/3267029/jisunpark_404-error.gif"} alt=
+            {"error"}/>
         </div>
     )
 }
