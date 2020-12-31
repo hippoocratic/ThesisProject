@@ -14,6 +14,8 @@ export default function AuthOptions() {
           doctor: undefined,
         });
         localStorage.setItem("auth-token", "");
+        localStorage.setItem("length", 0);
+
       };
     
       return (

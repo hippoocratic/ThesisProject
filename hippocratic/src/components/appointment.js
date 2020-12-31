@@ -6,6 +6,8 @@ export default class CreateInfo extends Component {
     constructor(props) {
       super(props);
       this.onChangePatientName = this.onChangePatientName.bind(this);
+      this.onChangeComplaint = this.onChangeComplaint.bind(this);
+      this.onChangePhone = this.onChangePhone.bind(this);
       this.onChangeDay = this.onChangeDay.bind(this);
       this.onChangeTime = this.onChangeTime.bind(this);
       this.onChangeDate = this.onChangeDate.bind(this);
@@ -13,6 +15,8 @@ export default class CreateInfo extends Component {
      
       this.state = {
         patientName:"",
+        complaint:"",
+        phone:"",
         day: "",
         time: "",
         date: "",
@@ -24,6 +28,16 @@ export default class CreateInfo extends Component {
         patientName: e.target.value,
       });
     }
+    onChangeComplaint(e) {
+        this.setState({
+            complaint: e.target.value,
+        });
+      }
+      onChangePhone(e) {
+        this.setState({
+          phone: e.target.value,
+        });
+      }
     onChangeDay(e) {
       this.setState({
         day: e.target.value,
@@ -55,7 +69,7 @@ export default class CreateInfo extends Component {
         
       };  console.log(this.state.patientName);
          
-      axios.post('http://localhost:3000/appointment/add', cases)
+      axios.post('http://localhost:3000/appointment', cases)
       
         .then(res=> console.log(res.data));
       this.setState({
