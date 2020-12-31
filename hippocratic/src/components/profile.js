@@ -41,6 +41,12 @@ export default class profile extends Component {
 
 
   render() {
+    // let locations =[];
+    // let data = this.inputsList();
+    // data.forEach(doc =>{
+    //   locations.push(doc.props.input.location)
+    // })
+    // console.log(data)
     return (
       <div>
         <h3>Profile page </h3>
