@@ -136,7 +136,7 @@ export default class CreateInfo extends Component {
               <button onClick={this.handleClick.bind(this)}> BOOK </button>
             </div>
           </form>
-          <calender/>
+        
         </div>
       );
     }
