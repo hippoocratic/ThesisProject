@@ -13,6 +13,7 @@ app.use(cors());
 //set up routes
 app.use('/doctors',require("./routes/doctorRouter"))
 app.use('/infos', require("./routes/infosRouter"))
+app.use('/appointments/', require("./routes/appointmentRouter"))
 
 
 const PORT = process.env.PORT || 3000;

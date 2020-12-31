@@ -6,11 +6,12 @@ const appointmentSchema = new mongoose.Schema({
 
     day:{type: String, required: true, maxlength:120},
     time:{type: Number, required: true, maxlength:120},
-    date : { type : Date, default: Date.now }
+    date : {type: String, required: true, maxlength:120 }
     
     
 });
 
 const Appointment = mongoose.model("Appointment", appointmentSchema);
 module.exports = Appointment;
+
 
