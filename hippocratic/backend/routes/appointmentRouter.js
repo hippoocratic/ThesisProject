@@ -10,11 +10,13 @@ router.route("/appoin").get((req, res) => {
   
   router.route("/booking").post((req, res) => {
     
+    const patientName =req.body.patientName;
     const day = req.body.day;
     const time = Number(req.body.time);
     const date =req.body.date;
   
     const newAppointment = new Appointment({
+      patientName,
       day,
       time,
       date,

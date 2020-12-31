@@ -83,7 +83,7 @@ export default class CreateInfo extends Component {
       phone: "",
       location: "",
     });
-    console.log(input);
+  
   }
 
  
