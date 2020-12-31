@@ -64,7 +64,7 @@ export default function App() {
 
           <div className="container">
             <Switch>
-            <ProtectedRoute exact path="/add" component={CreateInfo} isAuth={localStorage.length >=0}/> 
+            <ProtectedRoute path="/add" component={CreateInfo} isAuth={localStorage.length >=0}/> 
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
@@ -76,7 +76,7 @@ export default function App() {
               <Route path="/doctors" component={doctors} />
               <Route path="/appointment" component={appointment}/>
             </Switch>
-            <calender />
+    
           </div>
         </DoctorContext.Provider>
         <Footer />

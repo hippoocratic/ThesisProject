@@ -13,8 +13,8 @@ export default function AuthOptions() {
           token: undefined,
           doctor: undefined,
         });
-        localStorage.setItem("auth-token", "");
-        localStorage.setItem("length", 0);
+        localStorage.clear("auth-token", "");
+        // localStorage.setItem("length", 0);
 
       };
     
