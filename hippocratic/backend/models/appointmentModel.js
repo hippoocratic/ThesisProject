@@ -5,8 +5,8 @@ const mongoose =require('mongoose');
 const appointmentSchema = new mongoose.Schema({
 
     patientName:{type: String, required: true, maxlength:120},
-    complaint:{type: String, required: false, maxlength:200},
-    phone:{type: Number, required: false, maxlength:120},
+    complaint:{type: String, required: true, maxlength:200},
+    phone:{type: Number, required: true, maxlength:120},
     day:{type: String, required: true, maxlength:120},
     time:{type: Number, required: true, maxlength:120},
     date : {type: String, required: true, maxlength:120 }
