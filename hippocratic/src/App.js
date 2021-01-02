@@ -14,12 +14,12 @@ import DoctorContext from "./context/DoctorContext";
 import CreateInfo from "./components/create-info";
 import EditInfo from "./components/edit-info";
 import profile from "./components/profile";
-import ProtectedRoute from "./components/ProtectedRoute";
+// import ProtectedRoute from "./components/ProtectedRoute";
 import notfound from "./components/notfound";
 import AuthOptions from "./components/auth/AuthOptions";
 import HomePa from "./components/patient/HomePa";
 import doctors from "./components/patient/doctors";
-import appointment from "./components/appointment";
+import Appointment from "./components/appointment";
 
 export default function App() {
   const [doctorData, setDoctorData] = useState({
@@ -64,17 +64,17 @@ export default function App() {
 
           <div className="container">
             <Switch>
-            <ProtectedRoute path="/add" component={CreateInfo} isAuth={localStorage.length >=0}/> 
+            {/* <ProtectedRoute path="/add" component={CreateInfo} isAuth={localStorage.length >=0}/>  */}
               <Route exact path="/" component={Home} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
-              {/* <Route path ="/add" component={CreateInfo}/> */}
+              <Route path ="/add" component={CreateInfo}/>
               <Route path="/edit" component={EditInfo} />
               <Route path="/notfound" component={notfound} />
               <Route path="/profile" component={profile} />
               <Route path="/homePage" component={HomePa} />
               <Route path="/doctors" component={doctors} />
-              <Route path="/appointment" component={appointment}/>
+              <Route path="/appointment" component={Appointment}/>
             </Switch>
     
           </div>

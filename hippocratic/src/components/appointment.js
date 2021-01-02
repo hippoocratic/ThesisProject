@@ -2,7 +2,7 @@ import React, { Component} from "react";
 import axios from "axios";
 
 
-export default class CreateInfo extends Component {
+export default class Appointment extends Component {
     constructor(props) {
       super(props);
       this.onChangePatientName = this.onChangePatientName.bind(this);
@@ -20,6 +20,7 @@ export default class CreateInfo extends Component {
         day: "",
         time: "",
         date: "",
+        appointment:[]
     
       };
     }
@@ -61,17 +62,18 @@ export default class CreateInfo extends Component {
     }
     onSubmit(e) {
       e.preventDefault();
-      const cases = {
+      const input = {
         patientName: this.state.patientName,
         complaint: this.state.complaint,
         phone:this.state.phone,
         day: this.state.day,
         time: this.state.time,
         date: this.state.date,
+       
         
-      };  
+      };   console.log(this.state.date);
          
-      axios.post('http://localhost:3000/appointment/booking', cases)
+      axios.post('http://localhost:3000/appointment/booking', input)
       
         .then(res=> console.log(res.data));
       this.setState({
@@ -86,8 +88,7 @@ export default class CreateInfo extends Component {
      
     }
   
-   
-  
+
     render() {
       return (
         <div>
@@ -95,7 +96,7 @@ export default class CreateInfo extends Component {
           <form className="align-bottom" onSubmit={this.onSubmit}>
           <label>patientName </label>
             <input
-              placeholder="write about yourself"
+              placeholder="write"
               type="text"
               required
               className="form-control"
@@ -104,7 +105,7 @@ export default class CreateInfo extends Component {
             />
             <label>complaint </label>
             <input
-              placeholder="write about yourself"
+              placeholder="write"
               type="text"
               required
               className="form-control"
@@ -113,7 +114,7 @@ export default class CreateInfo extends Component {
             />
             <label>phone </label>
             <input
-              placeholder="write about yourself"
+              placeholder="write"
               type="text"
               required
               className="form-control"
@@ -122,7 +123,7 @@ export default class CreateInfo extends Component {
             />
             <label>day </label>
             <input
-              placeholder="write about yourself"
+              placeholder="write"
               type="text"
               required
               className="form-control"
@@ -132,7 +133,7 @@ export default class CreateInfo extends Component {
   
             <label>time </label>
             <input
-              placeholder="write about yourself"
+              placeholder="write"
               type="text"
               required
               className="form-control"
@@ -142,16 +143,13 @@ export default class CreateInfo extends Component {
   
             <label>date</label>
             <input
-              placeholder="write about yourself"
+              placeholder="write"
               type="text"
               required
               className="form-control"
               value={this.state.date}
               onChange={this.onChangeDate}
             />
-  
-  
-           
   
             <div className="col-sm-10">
               
