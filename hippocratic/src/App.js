@@ -20,6 +20,7 @@ import AuthOptions from "./components/auth/AuthOptions";
 import HomePa from "./components/patient/HomePa";
 import doctors from "./components/patient/doctors";
 import AddAppointment from "./components/appointment";
+// import { storage } from "./firebase";
 
 export default function App() {
   const [doctorData, setDoctorData] = useState({
@@ -35,12 +36,12 @@ export default function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "http://localhost:3000/doctors/tokenIsValid",
+        "http://localhost:5000/doctors/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenRes.data) {
-        const doctorRes = await Axios.get("http://localhost:3000/doctors/", {
+        const doctorRes = await Axios.get("http://localhost:5000/doctors/", {
           headers: { "x-auth-token": token },
         });
         setDoctorData({
