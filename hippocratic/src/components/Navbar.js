@@ -32,7 +32,7 @@ function Navbar() {
   return (
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
-        <nav  class="navbar navbar-expand-lg navbar-light ">
+        <nav  className="navbar navbar-expand-lg navbar-light ">
           <div className='container-fluid'>
           
             <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
