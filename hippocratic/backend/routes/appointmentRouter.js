@@ -2,7 +2,7 @@ const router = require("express").Router();
 let Appointment = require("../models/appointmentModel");
 
 
-router.route("/appoin").get((req, res) => {
+router.route("/").get((req, res) => {
   Appointment.find()
       .then((appointments) => res.json(appointments))
       .catch((err) => res.status(400).json("Error :" + err));
@@ -13,7 +13,7 @@ router.route("/appoin").get((req, res) => {
     
     const patientName =req.body.patientName;
     const complaint =req.body.complaint;
-    const phone =Number(req.body.time);
+    const phone =Number(req.body.phone);
     const day = req.body.day;
     const time = Number(req.body.time);
     const date =req.body.date;

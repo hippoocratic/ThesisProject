@@ -20,7 +20,7 @@ export default class CreateInfo extends Component {
         day: "",
         time: "",
         date: "",
-        appointments: [],
+    
       };
     }
     onChangePatientName(e) {
@@ -63,17 +63,21 @@ export default class CreateInfo extends Component {
       e.preventDefault();
       const cases = {
         patientName: this.state.patientName,
+        complaint: this.state.complaint,
+        phone:this.state.phone,
         day: this.state.day,
         time: this.state.time,
         date: this.state.date,
         
-      };  console.log(this.state.patientName);
+      };  
          
-      axios.post('http://localhost:3000/appointment', cases)
+      axios.post('http://localhost:3000/appointment/booking', cases)
       
         .then(res=> console.log(res.data));
       this.setState({
         patientName:"",
+        complaint:"",
+        phone:"",
         day: "",
         time: "",
         date: "",
@@ -97,6 +101,24 @@ export default class CreateInfo extends Component {
               className="form-control"
               value={this.state.patientName}
               onChange={this.onChangePatientName}
+            />
+            <label>complaint </label>
+            <input
+              placeholder="write about yourself"
+              type="text"
+              required
+              className="form-control"
+              value={this.state.complaint}
+              onChange={this.onChangeComplaint}
+            />
+            <label>phone </label>
+            <input
+              placeholder="write about yourself"
+              type="text"
+              required
+              className="form-control"
+              value={this.state.phone}
+              onChange={this.onChangePhone}
             />
             <label>day </label>
             <input
