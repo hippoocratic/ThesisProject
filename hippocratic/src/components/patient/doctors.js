@@ -26,7 +26,7 @@ export default class doctors extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/infos/")
+      .get("http://localhost:3000/infos/")
       .then((response) => {
         this.setState({ inputs: response.data });
       })
