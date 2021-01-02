@@ -8,12 +8,12 @@ router.route("/").get((req, res) => {
       .catch((err) => res.status(400).json("Error :" + err));
   });
   
-  router.route("/booking").post((req, res) => {
+  router.route("/appointment/booking").post((req, res) => {
     const patientName =req.body.patientName;
     const complaint =req.body.complaint;
     const phone =Number(req.body.phone);
     const day = req.body.day;
-    const time = Number(req.body.time);
+    const time = req.body.time;
     const date =req.body.date;
   
     const newAppointment = new Appointment({

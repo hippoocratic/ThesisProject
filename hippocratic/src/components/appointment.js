@@ -57,12 +57,12 @@ export default class AddAppointment extends Component {
       });
     }
   
-    handleClick() {
-      window.location = "/appointment";
-    }
-    onSubmit(e) {
+    // handleClick() {
+    //   window.location = "/appointment";
+    // }
+    onSubmit(e) {console.log("kkd");
     e.preventDefault();
-      const task = {
+      const cases = {
         patientName:this.state.patientName,
         complaint:this.state.complaint,
         phone:this.state.phone,
@@ -72,9 +72,8 @@ export default class AddAppointment extends Component {
        
         
       };  
-          console.log(task);
-      axios.post('http://localhost:3000/appointment/booking', task)
-       
+          console.log(cases);
+      axios.post("http://localhost:3000/appointment/booking", cases)
         .then( res => console.log(res.data));
       this.setState({
         patientName:"",
@@ -83,9 +82,9 @@ export default class AddAppointment extends Component {
         day: "",
         time: "",
         date: "",
-      
+       
       });
-     
+    
    }
 
   
@@ -93,8 +92,8 @@ export default class AddAppointment extends Component {
       return (
         <div>
           <h3> Booking </h3>
-          <form className="align-bottom" onSubmit={this.onSubmit}>
-          <label>patientName </label>
+          <form onSubmit={this.onSubmit}>
+          <label> patientName </label>
             <input
               placeholder="write"
               type="text"
@@ -131,7 +130,7 @@ export default class AddAppointment extends Component {
               onChange={this.onChangeDay}
             />
   
-            <label>time </label>
+            <label> time </label>
             <input
               placeholder="write"
               type="time"
@@ -152,8 +151,7 @@ export default class AddAppointment extends Component {
             />
   
             <div className="col-sm-10">
-              
-              <button onClick={this.handleClick.bind(this)}> BOOK </button>
+              <button onClick={this.onSubmit}> BOOK </button>
             </div>
           </form>
         

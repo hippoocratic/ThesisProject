@@ -24,7 +24,7 @@ export default class profile extends Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:3000/infos/")
+      .get("http://localhost:5000/infos/")
       .then((response) => {
         this.setState({ inputs: response.data });
       })

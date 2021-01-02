@@ -72,7 +72,7 @@ export default class CreateInfo extends Component {
       location: this.state.location,
     };
        
-    axios.post('http://localhost:3000/infos/add', input)
+    axios.post('http://localhost:5000/infos/add', input)
     
       .then(res=> console.log(res.data));
     this.setState({
@@ -85,6 +85,16 @@ export default class CreateInfo extends Component {
     });
   
   }
+  // const ReactFirebaseFileUpload = () => {
+  //   const [image, setImage ]=useState (null);
+
+  //   const handleChange = e =>{
+  //     if(e.target.files[0]){
+
+  //     }
+  //   };
+  //   const handleUpoad = () => {};
+  // }
 
  
 
@@ -92,6 +102,8 @@ export default class CreateInfo extends Component {
     return (
       <div>
         <h3> Write your information </h3>
+        {/* <input type ="file" onChange={handleChange}/>
+        <button onClick={handleUpoad}>Upload </button> */}
         <form className="align-bottom" onSubmit={this.onSubmit}>
         <label>name </label>
           <input
