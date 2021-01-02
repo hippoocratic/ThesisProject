@@ -115,7 +115,7 @@ export default class AddAppointment extends Component {
             <label>phone </label>
             <input
               placeholder="write"
-              type="text"
+              type="phone"
               required
               className="form-control"
               value={this.state.phone}
@@ -124,7 +124,7 @@ export default class AddAppointment extends Component {
             <label>day </label>
             <input
               placeholder="write"
-              type="text"
+              type="day"
               required
               className="form-control"
               value={this.state.day}
@@ -134,7 +134,7 @@ export default class AddAppointment extends Component {
             <label>time </label>
             <input
               placeholder="write"
-              type="text"
+              type="time"
               required
               className="form-control"
               value={this.state.time}
@@ -144,7 +144,7 @@ export default class AddAppointment extends Component {
             <label>date</label>
             <input
               placeholder="write"
-              type="text"
+              type="date"
               required
               className="form-control"
               value={this.state.date}
