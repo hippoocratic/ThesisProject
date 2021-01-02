@@ -60,8 +60,9 @@ export default class AddAppointment extends Component {
     // handleClick() {
     //   window.location = "/appointment";
     // }
-    onSubmit(e) {console.log("kkd");
-    e.preventDefault();
+    
+    onSubmit(e) {
+    e.preventDefault();console.log("kkd");
       const cases = {
         patientName:this.state.patientName,
         complaint:this.state.complaint,
@@ -73,7 +74,7 @@ export default class AddAppointment extends Component {
         
       };  
           console.log(cases);
-      axios.post("http://localhost:3000/appointment/booking", cases)
+      axios.post("http://localhost:3000/appointments/booking", cases)
         .then( res => console.log(res.data));
       this.setState({
         patientName:"",
@@ -92,7 +93,7 @@ export default class AddAppointment extends Component {
       return (
         <div>
           <h3> Booking </h3>
-          <form onSubmit={this.onSubmit}>
+          <form >
           <label> patientName </label>
             <input
               placeholder="write"

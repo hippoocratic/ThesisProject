@@ -18,7 +18,7 @@ export default function Login() {
    
       const loginDoctor = { email, password };
       const loginRes = await Axios.post(
-        "http://localhost:5000/doctors/login",
+        "http://localhost:3000/doctors/login",
         loginDoctor
       );
       setDoctorData({

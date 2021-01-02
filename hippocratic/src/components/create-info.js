@@ -72,7 +72,7 @@ export default class CreateInfo extends Component {
       location: this.state.location,
     };
        
-    axios.post('http://localhost:5000/infos/add', input)
+    axios.post('http://localhost:3000/infos/add', input)
     
       .then(res=> console.log(res.data));
     this.setState({

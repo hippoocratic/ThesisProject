@@ -23,7 +23,7 @@ export default class EditInfo extends Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:5000/infos/"+this.props.match.params.id)
+      .get("http://localhost:3000/infos/"+this.props.match.params.id)
       .then(response => {
         this.setState({
           name: response.data.name,
@@ -81,7 +81,7 @@ export default class EditInfo extends Component {
     console.log(this.props)
     axios
       .post(
-        "http://localhost:5000/infos/update/"+this.props.match.params.id,
+        "http://localhost:3000/infos/update/"+this.props.match.params.id,
         input
       )
       .then(res => console.log(res.data))

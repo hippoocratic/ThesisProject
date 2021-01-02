@@ -36,12 +36,12 @@ export default function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "http://localhost:5000/doctors/tokenIsValid",
+        "http://localhost:3000/doctors/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenRes.data) {
-        const doctorRes = await Axios.get("http://localhost:5000/doctors/", {
+        const doctorRes = await Axios.get("http://localhost:3000/doctors/", {
           headers: { "x-auth-token": token },
         });
         setDoctorData({
