@@ -2,7 +2,7 @@ import React, { Component} from "react";
 import axios from "axios";
 
 
-export default class Appointment extends Component {
+export default class AddAppointment extends Component {
     constructor(props) {
       super(props);
       this.onChangePatientName = this.onChangePatientName.bind(this);
@@ -61,21 +61,21 @@ export default class Appointment extends Component {
       window.location = "/appointment";
     }
     onSubmit(e) {
-      e.preventDefault();
-      const input = {
-        patientName: this.state.patientName,
-        complaint: this.state.complaint,
+    e.preventDefault();
+      const task = {
+        patientName:this.state.patientName,
+        complaint:this.state.complaint,
         phone:this.state.phone,
-        day: this.state.day,
-        time: this.state.time,
-        date: this.state.date,
+        day:this.state.day,
+        time:this.state.time,
+        date:this.state.date,
        
         
-      };   console.log(this.state.date);
-         
-      axios.post('http://localhost:3000/appointment/booking', input)
-      
-        .then(res=> console.log(res.data));
+      };  
+          console.log(task);
+      axios.post('http://localhost:3000/appointment/booking', task)
+       
+        .then( res => console.log(res.data));
       this.setState({
         patientName:"",
         complaint:"",
@@ -86,9 +86,9 @@ export default class Appointment extends Component {
       
       });
      
-    }
-  
+   }
 
+  
     render() {
       return (
         <div>

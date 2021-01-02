@@ -9,8 +9,6 @@ router.route("/").get((req, res) => {
   });
   
   router.route("/booking").post((req, res) => {
-    
-    
     const patientName =req.body.patientName;
     const complaint =req.body.complaint;
     const phone =Number(req.body.phone);
