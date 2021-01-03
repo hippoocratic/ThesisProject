@@ -20,6 +20,8 @@ import AuthOptions from "./components/auth/AuthOptions";
 import HomePa from "./components/patient/HomePa";
 import doctors from "./components/patient/doctors";
 import AddAppointment from "./components/appointment";
+import ChatPage from "./components/chatPage";
+import profilePage from "./components/patient/profilePage";
 // import { storage } from "./firebase";
 
 export default function App() {
@@ -76,6 +78,8 @@ export default function App() {
               <Route path="/homePage" component={HomePa} />
               <Route path="/doctors" component={doctors} />
               <Route path="/appointment" component={AddAppointment}/>
+              <Route exact path="/profilePage" component={profilePage} />
+              <Route exact path="/chat" component={ChatPage} />
             </Switch>
     
           </div>
