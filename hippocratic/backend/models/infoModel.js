@@ -9,7 +9,9 @@ const infoSchema = new mongoose.Schema({
     conferences:{type: String, maxlength:120},
     insurance_companies:{type: String, maxlength:120},
     phone:{type: Number, required: true, maxlength:120},
-    location:{type: String, required: true, maxlength:120}
+    location:{type: String, required: true, maxlength:120},
+    working_hour:{type : Date, default: new Date()}
+    
     
 });
 

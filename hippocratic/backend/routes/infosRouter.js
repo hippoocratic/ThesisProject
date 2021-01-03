@@ -14,6 +14,7 @@ router.route("/add").post((req, res) => {
   const insurance_companies = req.body.insurance_companies;
   const phone = Number(req.body.phone);
   const location = req.body.location;
+  const working_hour = req.body.date;
 
   const newInfo = new Info({
     name,
@@ -22,6 +23,7 @@ router.route("/add").post((req, res) => {
     insurance_companies,
     phone,
     location,
+    working_hour
   });
 
   newInfo.save()
@@ -50,6 +52,7 @@ router.route("/update/:id").post((req, res) => {
       info.conferences = req.body.conferences;
       info.phone = Number(req.body.phone);
       info.location = req.body.location;
+      info.working_hour=req.body.date;
 
       info
         .save()

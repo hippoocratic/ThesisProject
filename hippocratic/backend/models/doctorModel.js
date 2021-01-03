@@ -4,7 +4,8 @@ const mongoose =require('mongoose');
 const doctorSchema = new mongoose.Schema({
     displayName:{type:String},
     email:{type:String, required:true, unique:true},
-    password:{type:String, required:true , minlength:5} 
+    password:{type:String, required:true , minlength:5},
+    userType:{type:String, required:true}
  
 });
 

@@ -12,6 +12,7 @@ export default class CreateInfo extends Component {
     this.onChangeInsurance_companies = this.onChangeInsurance_companies.bind(this);
     this.onChangePhone = this.onChangePhone.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
+    this.onChangeWorking_hour = this.onChangeWorking_hour.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
    
     this.state = {
@@ -21,6 +22,7 @@ export default class CreateInfo extends Component {
       insurance_companies: "",
       phone: "",
       location: "",
+      working_hour:"",
       infos: [],
     };
   }
@@ -58,6 +60,12 @@ export default class CreateInfo extends Component {
       location: e.target.value,
     });
   }
+
+  onChangeWorking_hour(e) {
+    this.setState({
+      working_hour: e.target.value,
+    });
+  }
   handleClick() {
     window.location = "/profile";
   }
@@ -70,6 +78,7 @@ export default class CreateInfo extends Component {
       insurance_companies: this.state.insurance_companies,
       phone: this.state.phone,
       location: this.state.location,
+      working_hour:this.state.working_hour
     };
        
     axios.post('http://localhost:3000/infos/add', input)
@@ -82,6 +91,7 @@ export default class CreateInfo extends Component {
       insurance_companies: "",
       phone: "",
       location: "",
+      working_hour:""
     });
   
   }
@@ -162,6 +172,16 @@ export default class CreateInfo extends Component {
             className="form-control"
             value={this.state.location}
             onChange={this.onChangeLocation}
+          />
+
+<label>working hour </label>
+          <input
+            placeholder="write about yourself"
+            type="Time"
+            required
+            className="form-control"
+            value={this.state.working_hour}
+            onChange={this.onChangeWorking_hour}
           />
 
 
