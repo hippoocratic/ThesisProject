@@ -1,17 +1,16 @@
 import React, { Component} from "react";
-import axios from "axios";
+// import axios from "axios";
+import $ from "jquery";
+
+
 
 
 export default class AddAppointment extends Component {
     constructor(props) {
       super(props);
-      this.onChangePatientName = this.onChangePatientName.bind(this);
-      this.onChangeComplaint = this.onChangeComplaint.bind(this);
-      this.onChangePhone = this.onChangePhone.bind(this);
-      this.onChangeDay = this.onChangeDay.bind(this);
-      this.onChangeTime = this.onChangeTime.bind(this);
-      this.onChangeDate = this.onChangeDate.bind(this);
-      this.onSubmit = this.onSubmit.bind(this);
+     
+      this.handleChange = this.handleChange.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
      
       this.state = {
         patientName:"",
@@ -24,67 +23,39 @@ export default class AddAppointment extends Component {
     
       };
     }
-    onChangePatientName(e) {
-      this.setState({
-        patientName: e.target.value,
-      });
-    }
-    onChangeComplaint(e) {
-        this.setState({
-            complaint: e.target.value,
-        });
-      }
-      onChangePhone(e) {
-        this.setState({
-          phone: e.target.value,
-        });
-      }
-    onChangeDay(e) {
-      this.setState({
-        day: e.target.value,
-      });
-    }
   
-    onChangeTime(e) {
+    handleChange(evt){
       this.setState({
-        time: e.target.value,
-      });
+      [evt.target.name]:evt.target.value
+      })
+    // console.log(this.state)
+
     }
-  
-    onChangeDate(e) {
-      this.setState({
-        date: e.target.value,
-      });
-    }
-  
-    // handleClick() {
-    //   window.location = "/appointment";
-    // }
     
-    onSubmit(e) {
-    e.preventDefault();console.log("kkd");
+    handleSubmit(e) {
+    e.preventDefault();
       const cases = {
         patientName:this.state.patientName,
         complaint:this.state.complaint,
         phone:this.state.phone,
         day:this.state.day,
-        time:this.state.time,
+        // time:this.state.time,
         date:this.state.date,
-       
-        
       };  
-          console.log(cases);
-      axios.post("http://localhost:3000/appointments/booking", cases)
-        .then( res => console.log(res.data));
-      this.setState({
-        patientName:"",
-        complaint:"",
-        phone:"",
-        day: "",
-        time: "",
-        date: "",
-       
-      });
+      $.ajax({
+        url:"http://localhost:3000/appointments/booking",
+        method:"POST",
+        data:JSON.stringify(cases),
+        contentType:"application/json",
+        success:function (){
+          console.log("data saved successfully ")
+        },
+        error:function(err){
+          console.log("data can't be saved:", err)
+
+        }
+
+      })
     
    }
 
@@ -93,15 +64,16 @@ export default class AddAppointment extends Component {
       return (
         <div>
           <h3> Booking </h3>
-          <form >
+          <form onSubmit={this.handleSubmit}>
           <label> patientName </label>
             <input
               placeholder="write"
               type="text"
               required
               className="form-control"
+              name="patientName"
               value={this.state.patientName}
-              onChange={this.onChangePatientName}
+              onChange={this.handleChange}
             />
             <label>complaint </label>
             <input
@@ -109,8 +81,9 @@ export default class AddAppointment extends Component {
               type="text"
               required
               className="form-control"
+              name="complaint"
               value={this.state.complaint}
-              onChange={this.onChangeComplaint}
+              onChange={this.handleChange}
             />
             <label>phone </label>
             <input
@@ -118,8 +91,9 @@ export default class AddAppointment extends Component {
               type="phone"
               required
               className="form-control"
+              name="phone"
               value={this.state.phone}
-              onChange={this.onChangePhone}
+              onChange={this.handleChange}
             />
             <label>day </label>
             <input
@@ -127,8 +101,9 @@ export default class AddAppointment extends Component {
               type="day"
               required
               className="form-control"
+              name="day"
               value={this.state.day}
-              onChange={this.onChangeDay}
+              onChange={this.handleChange}
             />
   
             <label> time </label>
@@ -137,8 +112,9 @@ export default class AddAppointment extends Component {
               type="time"
               required
               className="form-control"
-              value={this.state.time}
-              onChange={this.onChangeTime}
+              // name="time"
+              // value={this.state.time}
+              // onChange={this.handleChange}
             />
   
             <label>date</label>
@@ -147,12 +123,13 @@ export default class AddAppointment extends Component {
               type="date"
               required
               className="form-control"
+              name="date"
               value={this.state.date}
-              onChange={this.onChangeDate}
+              onChange={this.handleChange}
             />
   
             <div className="col-sm-10">
-              <button onClick={this.onSubmit}> BOOK </button>
+              <button type="submit"> BOOK </button>
             </div>
           </form>
         

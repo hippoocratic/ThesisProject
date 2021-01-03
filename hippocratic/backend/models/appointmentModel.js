@@ -8,8 +8,8 @@ const appointmentSchema = new mongoose.Schema({
     complaint:{type: String, required: true, maxlength:200},
     phone:{type: Number, required: true, maxlength:120},
     day:{type: String, required: true, maxlength:120},
-    time: {type : Date, default: Date.now},
-    date : {type: Date, required: true, maxlength:120 }
+    time : { type : Date, default: Date.now },
+    date : {type : Date, default: new Date()}
 
 });
 
