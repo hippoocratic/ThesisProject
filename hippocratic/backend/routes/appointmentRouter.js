@@ -9,7 +9,7 @@ router.route("/").get((req, res) => {
   });
   
   router.route("/booking").post((req, res) => {
-    console.log(req.body,"i am the body");
+   
     const patientName =req.body.patientName;
     const complaint =req.body.complaint;
     const phone =Number(req.body.phone);

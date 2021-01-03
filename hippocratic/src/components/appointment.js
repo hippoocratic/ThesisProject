@@ -56,13 +56,13 @@ export default class AddAppointment extends Component {
         }
 
       })
-    
+    window.location="/profilePage";
    }
 
   
     render() {
       return (
-        <div>
+        <div >
           <h3> Booking </h3>
           <form onSubmit={this.handleSubmit}>
           <label> patientName </label>

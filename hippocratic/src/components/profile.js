@@ -11,6 +11,7 @@ const InfoInput = props => (
     <td>{props.input.insurance_companies}</td>
     <td>{props.input.phone}</td>
     <td>{props.input.location}</td>
+    <td>{props.input.working_hour}</td>
     <td>
     <Link className="btn btn-warning" to={"/edit/"+props.input._id}>edit</Link>
     </td>
@@ -60,6 +61,7 @@ export default class profile extends Component {
             <th>insurance_companies</th>
             <th>Phone</th>
             <th>Location</th>
+            <th>Working hour</th>
           </tr>
           <tbody>{this.inputsList()}</tbody>
         </table>
