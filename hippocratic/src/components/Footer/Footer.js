@@ -3,6 +3,9 @@ import './Footer.css';
 import { Button } from '../Button';
 import { Link } from 'react-router-dom';
 import { BiPlusMedical } from 'react-icons/bi';
+import { FaPhoneAlt } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
+
 function Footer() {
   return (
     <div className='footer-container'>
@@ -32,7 +35,18 @@ function Footer() {
             
           </div>
           <div className='footer-link-items'>
-            <h2>Contact Us</h2>
+            <h2> Contact Us</h2>
+
+            <Link to ="/" className='social-logo '>
+              <MdEmail className='navbar-icon h4' />
+              <h4>Hippocratic@gmail.com</h4>
+              </Link>
+          
+            <Link to ="/"className='social-logo '>
+              <FaPhoneAlt className='navbar-icon h4' />
+              <h4>0788885558</h4>
+              </Link>
+         
            
           </div>
         </div>
@@ -46,7 +60,7 @@ function Footer() {
               Hippocratic
             </Link>
           </div>
-          <small className='website-rights'>Hippocratic © 2020</small>
+          <small className='website-rights'>© 2020 Copyright:Hippocratic.com</small>
           <div className='social-icons'>
             
             

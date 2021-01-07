@@ -1,10 +1,14 @@
 .home__hero-section {
-    color: #fff;
+    color: #4F4846;
     padding: 160px 0;
+    font-family:'Arima Madurai';
+    
   }
   
   .home__hero-row {
     align-items: center;
+    
+    
   }
   
   .row {
@@ -32,29 +36,32 @@
   }
   
   .top-line {
-    color: #f7f8fa;
-    font-size: 16px;
+    color: #4F4846;
+    font-size: 30px;
     line-height: 16px;
     font-weight: 700;
     letter-spacing: 1.4px;
     text-transform: uppercase;
     margin-bottom: 16px;
+    font-family:'Arima Madurai';
   }
   
   .heading {
     margin-bottom: 24px;
-    font-size: 48px;
+    font-size: 42px;
     line-height: 1.1;
     font-weight: 600;
-    color: #f7f8fa;
+    color: #4F4846;
+     font-family:'Arima Madurai';
   }
   
   .dark {
-    color: #1c2237;
+    color: #E8CEBF;
   }
   
   .darkBg {
-    background-color: #37474F;
+    background-color: #E8CEBF;
+   
   }
   
   .home__hero-subtitle {
@@ -62,6 +69,7 @@
     margin-bottom: 35px;
     font-size: 18px;
     line-height: 24px;
+    font-family:'Arima Madurai';
   }
   
   .home__hero-img-wrapper {

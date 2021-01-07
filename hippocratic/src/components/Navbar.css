@@ -1,6 +1,6 @@
 
 .navbar {
-  background: #37474F;
+  background: #E8CEBF;
   height: 80px;
   display: flex;
   justify-content: center;
@@ -28,16 +28,18 @@
 }
 
 .navbar-logo {
-  color: #fff;
+  color: #4F4846;
   justify-self: start;
   cursor: pointer;
+  font-family:'Arima Madurai' ;
   text-decoration: none;
-  font-size: 2rem;
+  font-size: 3rem;
   display: flex;
   align-items: center;
 }
 
 .navbar-icon {
+ 
   margin-right: 0.5rem;
 }
 
@@ -60,7 +62,8 @@
 }
 
 .nav-links {
-  color: #fff;
+  color: #4F4846;
+  font-family:'Arima Madurai';
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -94,7 +97,7 @@
   }
 
   .nav-menu.active {
-    background: #37474F;
+    background: #E8CEBF;
     left: 0;
     opacity: 1;
     transition: all 0.6s ease;

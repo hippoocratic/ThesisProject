@@ -91,6 +91,7 @@ export default class EditInfo extends Component {
     window.location = "/profile";
   }
   render() {
+    if(localStorage.getItem("auth-token") !== null && ("userType") === ("undefined")) {
     return (
       <div>
         <h3 className="font-weight-bold deep-purple-text" style={{fontFamily:"Courier"}}>Edit </h3>
@@ -161,6 +162,9 @@ export default class EditInfo extends Component {
         </div>
         </form>
       </div>
-    )
+    );
+  } else {
+    return ( <h1>Please Log in </h1>)
+  }
   }
 }

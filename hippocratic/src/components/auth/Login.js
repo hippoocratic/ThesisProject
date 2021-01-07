@@ -1,62 +1,73 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext} from "react";
 import { useHistory } from "react-router-dom";
-import DoctorContext from "../../context/DoctorContext";
+import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
+// import * as mdb from 'mdb-ui-kit'; 
+// import { Input } from 'mdb-ui-kit';
+// @import '~mdb-ui-kit/css/mdb.min.css';
 
 export default function Login() {
+  // const [userType, setUserType] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [error, setError] = useState();
 
-  const { setDoctorData } = useContext(DoctorContext);
+  const { setUserData } = useContext(UserContext);
   const history = useHistory();
 
   const submit = async (e) => {
     e.preventDefault();
-    try{
-   
-      const loginDoctor = { email, password };
+    try {
+      
+      const loginUser = { email, password};
       const loginRes = await Axios.post(
-        "http://localhost:3000/doctors/login",
-        loginDoctor
+        "http://localhost:3000/users/login",
+        loginUser
       );
-      setDoctorData({
+      console.log(loginRes.data.user)
+      setUserData({
         token: loginRes.data.token,
-        doctor: loginRes.data.doctor,
+        userType: loginRes.data.user.userType,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
+      localStorage.setItem("userType", loginRes.data.user.userType);
       history.push("/");
-
-    }
-    catch (err) {
+    } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);
     }
   };
   return (
-    <div className="page">
-      <h2>Log in</h2>
+    <div className="page" style ={{height:"500px"}}>
+    
       {error && (
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
       )}
-     
-      <form className="form" onSubmit={submit}>
-        <label htmlFor="login-email">Email</label>
+
+<form className="card p-3" onSubmit={submit}>
+<div className="form-group row">
+ <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
+ <div className="col-sm-10">
         <input
-          id="login-email"
+        className="form-control" id="inputEmail3"
           type="email"
           onChange={(e) => setEmail(e.target.value)}
         />
-
-        <label htmlFor="login-password">Password</label>
+       </div></div><br></br>
+        
+        <div className="form-group row">
+        <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Password</label>
+        <div className="col-sm-10">
         <input
-          id="login-password"
+          className="form-control" id="inputEmail1"
           type="password"
           onChange={(e) => setPassword(e.target.value)}
-        />
+        /> </div></div><br></br>
 
-        <input type="submit" value="Log in" />
+        <input type="submit" className="btn btn-#266150" value="Log in" />
       </form>
     </div>
   );
 }
+
+

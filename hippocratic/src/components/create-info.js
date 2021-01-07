@@ -109,89 +109,98 @@ export default class CreateInfo extends Component {
  
 
   render() {
-    return (
-      <div>
-        <h3> Write your information </h3>
-        {/* <input type ="file" onChange={handleChange}/>
-        <button onClick={handleUpoad}>Upload </button> */}
-        <form className="align-bottom" onSubmit={this.onSubmit}>
-        <label>name </label>
-          <input
-            placeholder="write about yourself"
-            type="text"
-            required
-            className="form-control"
-            value={this.state.name}
-            onChange={this.onChangeName}
-          />
-          <label>overview </label>
-          <input
-            placeholder="write about yourself"
-            type="text"
-            required
-            className="form-control"
-            value={this.state.overview}
-            onChange={this.onChangeOverview}
-          />
-
-          <label>conferences </label>
-          <input
-            placeholder="write about yourself"
-            type="text"
-            required
-            className="form-control"
-            value={this.state.conferences}
-            onChange={this.onChangeConferences}
-          />
-
-          <label>insurance companies </label>
-          <input
-            placeholder="write about yourself"
-            type="text"
-            required
-            className="form-control"
-            value={this.state.insurance_companies}
-            onChange={this.onChangeInsurance_companies}
-          />
-
-          <label>phone </label>
-          <input
-            placeholder="write about yourself"
-            type="text"
-            required
-            className="form-control"
-            value={this.state.phone}
-            onChange={this.onChangePhone}
-          />
-
-          <label>location </label>
-          <input
-            placeholder="write about yourself"
-            type="text"
-            required
-            className="form-control"
-            value={this.state.location}
-            onChange={this.onChangeLocation}
-          />
-
-<label>working hour </label>
-          <input
-            placeholder="write about yourself"
-            type="Time"
-            required
-            className="form-control"
-            value={this.state.working_hour}
-            onChange={this.onChangeWorking_hour}
-          />
-
-
-          <div className="col-sm-10">
-            
-            <button onClick={this.handleClick.bind(this)}>ADD </button>
-          </div>
-        </form>
-     
-      </div>
-    );
+   console.log(localStorage.getItem("auth-token"))
+    console.log(localStorage.getItem("userType"))
+     return (
+       
+         <div>
+            {localStorage.getItem("auth-token") !== null && localStorage.getItem("userType") !== "Patient"?
+       
+     <div>
+     <h3> Write your information </h3>
+         
+          <form className="align-bottom" onSubmit={this.onSubmit}>
+          <label>name </label>
+            <input
+              placeholder="write about yourself"
+              type="text"
+              required
+              className="form-control"
+              value={this.state.name}
+              onChange={this.onChangeName}
+            />
+            <label>overview </label>
+            <input
+              placeholder="write about yourself"
+              type="text"
+              required
+              className="form-control"
+              value={this.state.overview}
+              onChange={this.onChangeOverview}
+            />
+  
+            <label>conferences </label>
+            <input
+              placeholder="write about yourself"
+              type="text"
+              required
+              className="form-control"
+              value={this.state.conferences}
+              onChange={this.onChangeConferences}
+            />
+  
+            <label>insurance companies </label>
+            <input
+              placeholder="write about yourself"
+              type="text"
+              required
+              className="form-control"
+              value={this.state.insurance_companies}
+              onChange={this.onChangeInsurance_companies}
+            />
+  
+            <label>phone </label>
+            <input
+              placeholder="write about yourself"
+              type="text"
+              required
+              className="form-control"
+              value={this.state.phone}
+              onChange={this.onChangePhone}
+            />
+  
+            <label>location </label>
+            <input
+              placeholder="write about yourself"
+              type="text"
+              required
+              className="form-control"
+              value={this.state.location}
+              onChange={this.onChangeLocation}
+            />
+  
+  <label>working hour </label>
+            <input
+              placeholder="write about yourself"
+              type="Time"
+              required
+              className="form-control"
+              value={this.state.working_hour}
+              onChange={this.onChangeWorking_hour}
+            />
+  
+  
+            <div className="col-sm-10">
+              
+              <button onClick={this.handleClick.bind(this)}>ADD </button>
+            </div>
+          </form>      
+     </div>
+          
+    : 
+      <h1>hello patient </h1>
+      }
+     </div>
+      );
   }
 }

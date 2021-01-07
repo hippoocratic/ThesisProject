@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 
 //set up routes
-app.use('/doctors',require("./routes/doctorRouter"))
+app.use('/users',require("./routes/userRouter"))
 app.use('/infos', require("./routes/infosRouter"))
 app.use('/appointments', require("./routes/appointmentRouter"))
 

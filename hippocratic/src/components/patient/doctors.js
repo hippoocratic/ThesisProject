@@ -3,14 +3,11 @@ import axios from "axios";
 
 
 const InfoInput = props => (
-  <tr>
-    <td>{props.input.name}</td>
-    <td>{props.input.overview}</td>
-    <td>{props.input.conferences}</td>
-    <td>{props.input.insurance_companies}</td>
-    <td>{props.input.phone}</td>
-    <td>{props.input.location}</td>
-  </tr>
+  <th>
+    <tr>{props.input.name}</tr>
+    <tr>{props.input.phone}</tr>
+    <tr>{props.input.location}</tr>
+  </th>
 );
 
 export default class doctors extends Component {
@@ -54,20 +51,24 @@ export default class doctors extends Component {
 
   render() {
     return (
-      <div className = "container text-center border border-light p-9">
-        <h3>doctors page </h3>
-        <input name="search" className="form-control" onChange={e => this.onSearch(e)} value={this.state.SearchString}  placeholder="Type Here ... "/>
-        <table className="table">
-          <tr>
-            <th>Name</th>
-            <th>Overview</th>
-            <th>Conferences</th>
-            <th>insurance_companies</th>
-            <th>Phone</th>
-            <th>Location</th>
-          </tr>
+      <div>
+    <h3>doctors page </h3>
+     <input name="search" className="form-control" onChange={e => this.onSearch(e)} value={this.state.SearchString}  placeholder="Type Here ... "/>
+      <div class="card" style={{width:"1000px", height:"1000px"}}>
+        
+       
+        {/* {/* <table className="table">  */}
+          {/* <th>
+            <tr>Name</tr>
+            <tr>Overview</tr>
+            <tr>Conferences</tr>
+            <tr>insurance_companies</tr> 
+            <tr>Phone</tr>
+            <tr>Location</tr>
+          </th>  */}
           <tbody>{this.inputsList()}</tbody>
-        </table>
+       
+      </div>
       </div>
     );
   }

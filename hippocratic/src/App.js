@@ -3,6 +3,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
 import "./App.css";
+
 import Navbar from "./components/Navbar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Axios from "axios";
@@ -10,24 +11,22 @@ import Home from "./components/HomePage/Home";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import DoctorContext from "./context/DoctorContext";
+import UserContext from "./context/UserContext";
 import CreateInfo from "./components/create-info";
 import EditInfo from "./components/edit-info";
 import profile from "./components/profile";
-// import ProtectedRoute from "./components/ProtectedRoute";
 import notfound from "./components/notfound";
 import AuthOptions from "./components/auth/AuthOptions";
-import HomePa from "./components/patient/HomePa";
 import doctors from "./components/patient/doctors";
 import AddAppointment from "./components/appointment";
-import ChatPage from "./components/chatPage";
 import profilePage from "./components/patient/profilePage";
-// import { storage } from "./firebase";
+
+
 
 export default function App() {
-  const [doctorData, setDoctorData] = useState({
+  const [userData, setUserData] = useState({
     token: undefined,
-    doctor: undefined,
+    user: undefined,
   });
 
   useEffect(() => {
@@ -38,17 +37,17 @@ export default function App() {
         token = "";
       }
       const tokenRes = await Axios.post(
-        "http://localhost:3000/doctors/tokenIsValid",
+        "http://localhost:3000/users/tokenIsValid",
         null,
         { headers: { "x-auth-token": token } }
       );
       if (tokenRes.data) {
-        const doctorRes = await Axios.get("http://localhost:3000/doctors/", {
+        const userRes = await Axios.get("http://localhost:3000/users/", {
           headers: { "x-auth-token": token },
         });
-        setDoctorData({
+        setUserData({
           token,
-          doctor: doctorRes.data,
+          user: userRes.data,
         });
       }
     };
@@ -59,31 +58,32 @@ export default function App() {
   return (
     <>
       <Router>
-        <DoctorContext.Provider value={{ doctorData, setDoctorData }}>
+        <UserContext.Provider value={{ userData, setUserData }}>
           <Navbar />
           {/* <Header /> */}
-          
+       
           <AuthOptions />
 
           <div className="container">
             <Switch>
-            {/* <ProtectedRoute path="/add" component={CreateInfo} isAuth={localStorage.length >=0}/>  */}
+       
               <Route exact path="/" component={Home} />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-              <Route path ="/add" component={CreateInfo}/>
+              <Route exact path="/login" component={Login} />
+              <Route exact path ="/register" component={Register} />
+              <Route exact path ="/create-info" component={CreateInfo}/>
               <Route path="/edit" component={EditInfo} />
               <Route path="/notfound" component={notfound} />
               <Route path="/profile" component={profile} />
-              <Route path="/homePage" component={HomePa} />
               <Route path="/doctors" component={doctors} />
               <Route path="/appointment" component={AddAppointment}/>
               <Route exact path="/profilePage" component={profilePage} />
-              <Route exact path="/chat" component={ChatPage} />
+            
+        
+             
             </Switch>
     
           </div>
-        </DoctorContext.Provider>
+        </UserContext.Provider>
         <Footer />
       </Router>
     </>
