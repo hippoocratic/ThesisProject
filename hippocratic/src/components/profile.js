@@ -32,22 +32,18 @@ export default class profile extends Component {
       .catch((error) => {
         console.log(error);
       });
-  }
+  }   
   inputsList() {
     return this.state.inputs.map((currentinput) => {
       console.log(currentinput._id);
       return <InfoInput input={currentinput} key={currentinput._id} />;
+
     });
   }
 
-
   render() {
-    // let locations =[];
-    // let data = this.inputsList();
-    // data.forEach(doc =>{
-    //   locations.push(doc.props.input.location)
-    // })
-    // console.log(data)
+    // if(localStorage.getItem("auth-token") !== null && ("userType") === ("undefined")) {
+    
     return (
       <div>
         <h3>Profile page </h3>
@@ -67,5 +63,8 @@ export default class profile extends Component {
         </table>
       </div>
     );
+    // } else {
+    //   return ( <h1>Please Log in </h1>)
+    // }
   }
 }

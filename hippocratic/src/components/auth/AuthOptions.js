@@ -1,17 +1,17 @@
 import React, {useContext} from 'react';
 // import {useHistory} from "react-router-dom";
-import DocterContext from '../../context/DoctorContext'
+import UserContext from '../../context/UserContext'
 
 export default function AuthOptions() {
-    const {doctorData, setDoctorData}= useContext(DocterContext);
+    const {userData, setUserData}= useContext(UserContext);
     // const history = useHistory();
 // 
     // const register = ()=> history.push("/register");
     // const login = ()=> history.push("/login");
     const logout = () => {
-        setDoctorData({
+        setUserData({
           token: undefined,
-          doctor: undefined,
+          user: undefined,
         });
         localStorage.clear("auth-token", "");
         // localStorage.setItem("length", 0);
@@ -20,7 +20,7 @@ export default function AuthOptions() {
     
       return (
         <nav className="auth-options">
-          {doctorData.doctor ? (
+          {userData.user ? (
             <button onClick={logout}>Log out</button>
           ) : (
             <>

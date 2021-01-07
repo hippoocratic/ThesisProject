@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
-import DoctorContext from "../../context/DoctorContext";
+import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
 // import ErrorNotice from "../misc/ErrorNotice";
@@ -10,26 +10,30 @@ export default function Register() {
   const [password, setPassword] = useState();
   const [passwordCheck, setPasswordCheck] = useState();
   const [displayName, setDisplayName] = useState();
+  const [userType, setUserType] = useState();
   const [error, setError] = useState("");
-
-  const { setDoctorData } = useContext(DoctorContext);
+  const { setUserData } = useContext(UserContext);
   const history = useHistory();
 
+  
   const submit = async (e) => {
     e.preventDefault();
 
     try {
-      const newDoctor = { email, password, passwordCheck, displayName };
+      const newUser = { email, password, passwordCheck, displayName, userType};
       
-      await Axios.post("http://localhost:3000/doctors/register", newDoctor);
-      const loginRes = await Axios.post("http://localhost:3000/doctors/login", {
+      await Axios.post("http://localhost:3000/users/register", newUser);
+      const loginRes = await Axios.post("http://localhost:3000/users/login", {
         email,
         password,
+        userType
+        
       });
 
-      setDoctorData({
+      setUserData({
         token: loginRes.data.token,
-        doctor: loginRes.data.doctor,
+        user: loginRes.data.user
+       
       });
       localStorage.setItem("auth-token", loginRes.data.token);
       history.push("/");
@@ -39,40 +43,70 @@ export default function Register() {
   };
 
   return (
-    <div className="page">
-      <h2>register</h2>
+    <div >
+
       {error && (
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
       )}
-      <form className="form" onSubmit={submit}>
-        <label htmlFor="register-email">Email</label>
+     
+      <form className="card p-3" onSubmit={submit}> 
+      <div className="form-group row">
+        <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
+        <div className="col-sm-10">
         <input
-          id="register-email"
+          className="form-control" id="inputEmail3"
           type="email"
+           placeholder="Write Your Email"
           onChange={(e) => setEmail(e.target.value)}
         />
-
-        <label htmlFor="register-password">Password</label>
+        </div>
+</div><br></br>
+ <div className="form-group row">
+        <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
+        <div className="col-sm-10">
         <input
-          id="register-password"
+          className="form-control" id="inputPassword3"
           type="password"
+           placeholder="Write your Password"
           onChange={(e) => setPassword(e.target.value)}
         />
+        </div>
+        </div><br></br>
+         <div className="form-group row">
+        <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Verify Password</label>
+        <div className="col-sm-10">
         <input
+        className="form-control" id="inputPassword4"
           type="password"
           placeholder="Verify password"
           onChange={(e) => setPasswordCheck(e.target.value)}
         />
-
-        <label htmlFor="register-display-name">Display name</label>
+        </div>
+        </div><br></br>
+ <div className="form-group row">
+        <label className="col-sm-2 col-form-label">Display name</label>
+          <div className="col-sm-10">
         <input
-          id="register-display-name"
+        className="form-control" id="inputName"
+          placeholder="Write your Name "
           type="text"
           onChange={(e) => setDisplayName(e.target.value)}
         />
+        </div>
+        </div><br></br>
+     
+      
+      <div className="dropdown">
+       
+<select className="btn btn-#266150 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" onChange={(e) => setUserType(e.target.value)}>
 
-        <input type="submit" value="Register" />
-      </form>
+        <option className="dropdown-item" value="Doctor">Doctor</option>
+        <option className="dropdown-item" value="Patient">Patient</option>
+      </select>
+
+        <input type="submit" className="btn btn-#266150" value="Register" />
+      
+    </div></form>
     </div>
   );
 }

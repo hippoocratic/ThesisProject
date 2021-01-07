@@ -8,6 +8,7 @@ import { IconContext } from 'react-icons/lib';
 // import {useHistory} from "react-router-dom";
 // import DocterContext from '../context/DoctorContext'
 
+
 function Navbar() {
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
@@ -33,6 +34,7 @@ function Navbar() {
     <>
       <IconContext.Provider value={{ color: '#fff' }}>
         <nav  className="navbar navbar-expand-lg navbar-light ">
+        
           <div className='container-fluid'>
           
             <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
@@ -57,24 +59,8 @@ function Navbar() {
                   Contact
                 </Link>
               </li>
-              <li className='nav-item'>
-                <Link
-                  to='/profile'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Profile
-                </Link>
-              </li>
-              <li className='nav-item'>
-                <Link
-                  to='/chat'
-                  className='nav-links'
-                  onClick={closeMobileMenu}
-                >
-                  Chat
-                </Link>
-              </li>
+           
+             
               <li className='nav-btn'>
                 {button ? (
                   <Link to='/login' className='btn-link'>

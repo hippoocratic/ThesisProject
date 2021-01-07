@@ -1,18 +1,18 @@
 import React, {useContext} from 'react'
 import HeroSection from '../HeroSection';
 import { Link } from "react-router-dom";
-import DoctorContext from "../../context/DoctorContext";
+import UserContext from "../../context/UserContext";
 import {homeObjOne} from './Data';
-import {homeObjTwo} from './Data';
+
 
 export default function Home () {
-    const { doctorData } = useContext(DoctorContext);
+    const { userData } = useContext(UserContext);
     return (
         
         <div className="page" >
            
-            {doctorData.doctor ? (
-                <h1> Welcome {doctorData.doctor.displayName}</h1>
+            {userData.user ? (
+                <h1> Welcome {userData.user.displayName}</h1>
             ) : (
                 <>
       <h2>You are not logged In</h2>
@@ -20,7 +20,7 @@ export default function Home () {
       </>
          )}
            <HeroSection {...homeObjOne}/>
-           <HeroSection {...homeObjTwo}/> 
+          
             
         </div>
     );
