@@ -32,7 +32,7 @@ router.route("/add").post((req, res) => {
 });
 
 router.route("/:id").get((req, res) => {
-  Info.findById(req.params.id)
+  Info.findById("5ff9654af4fa7f075efeaa11")
     .then((info) => res.json(info))
     .catch((err) => res.status(400).json("Error:" + err));
 });

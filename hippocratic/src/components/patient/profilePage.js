@@ -2,13 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 
 const AppointmentCases = (props) => (
-  <div>
-    <p>{props.cases.patientName}</p>
-    <p>{props.cases.complaint}</p>
-    <p>{props.cases.phone}</p>
-    <p>{props.cases.time}</p>
-    <p>{props.cases.date}</p>
-  </div>
+  <th>
+    <tr>{props.cases.patientName}</tr>
+    <tr>{props.cases.complaint}</tr>
+    <tr>{props.cases.phone}</tr>
+    <tr>{props.cases.date}</tr>
+  </th>
 );
 
 export default class profilePage extends Component {
@@ -16,11 +15,14 @@ export default class profilePage extends Component {
     super(props);
     this.state = {
       cases: [],
+      userId:localStorage.getItem('id'),
     };
   }
   componentDidMount() {
+    
+console.log(this.state.userId)
     axios
-      .get("http://localhost:3000/appointments/")
+      .get("http://localhost:3000/appointments/"+this.state.userId)
       .then((response) => {
         this.setState({ cases: response.data });
       })
@@ -28,23 +30,23 @@ export default class profilePage extends Component {
         console.log(error);
       });
   }
-  casesList() {
-    return this.state.cases.map((currentcases) => {
-      console.log(currentcases._id);
-      return <AppointmentCases cases={currentcases} key={currentcases._id} />;
-    });
-  }
+  // casesList() {
+  //   return this.state.cases.map((currentcases) => {
+  //     console.log(currentcases._id);
+  //     return <AppointmentCases cases={currentcases} key={currentcases._id} />;
+  //   });
+  // }
   render() {
     return (
-      <div className="card">
-        <p>patientName</p>
-        <p>complaint</p>
-        <p>phone</p>
-        <p>day</p>
-        <p>time</p>
-        <p>date</p>
+      <div>
+        
+        <h1>{this.state.cases.patientName}</h1>
+        <h2>{this.state.cases.complaint}</h2>
+        <h3>{this.state.cases.phone}</h3>
+        <h3>{this.state.cases.date}</h3>
+    
         <div>
-          <tbody>{this.casesList()}</tbody>
+          {/* <tbody>{this.casesList()}</tbody> */}
         </div>
       </div>
     );

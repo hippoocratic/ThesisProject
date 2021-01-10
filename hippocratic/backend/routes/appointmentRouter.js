@@ -33,7 +33,7 @@ router.route("/").get((req, res) => {
   });
 
   router.route("/:id").get((req, res) => {
-    Appointment.findById(req.params.id)
+    Appointment.findById("5ff96778f4fa7f075efeaa13")
       .then((appointment) => res.json(appointment))
       .catch((err) => res.status(400).json("Error:" + err));
   });

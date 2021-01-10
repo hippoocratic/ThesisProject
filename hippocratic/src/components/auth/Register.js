@@ -10,7 +10,7 @@ export default function Register() {
   const [password, setPassword] = useState();
   const [passwordCheck, setPasswordCheck] = useState();
   const [displayName, setDisplayName] = useState();
-  const [userType, setUserType] = useState();
+  const [userType, setUserType] = useState("");
   const [error, setError] = useState("");
   const { setUserData } = useContext(UserContext);
   const history = useHistory();
@@ -21,7 +21,7 @@ export default function Register() {
 
     try {
       const newUser = { email, password, passwordCheck, displayName, userType};
-      
+      console.log(userType)
       await Axios.post("http://localhost:3000/users/register", newUser);
       const loginRes = await Axios.post("http://localhost:3000/users/login", {
         email,
@@ -41,6 +41,13 @@ export default function Register() {
       err.response.data.msg && setError(err.response.data.msg);
     }
   };
+
+
+
+  const change=(e)=>{
+   setUserType(e.target.value)
+    console.log(e.target.value)
+  }
 
   return (
     <div >
@@ -98,13 +105,14 @@ export default function Register() {
       
       <div className="dropdown">
        
-<select className="btn btn-#266150 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false" onChange={(e) => setUserType(e.target.value)}>
+<select  id="dropdownMenuButton"  onChange={change}>
 
-        <option className="dropdown-item" value="Doctor">Doctor</option>
-        <option className="dropdown-item" value="Patient">Patient</option>
+        <option  value="Doctor">Doctor</option>
+        <option  value="Patient">Patient</option>
       </select>
 
         <input type="submit" className="btn btn-#266150" value="Register" />
+        <h6>if you already have account <a href="/login">Login</a></h6>
       
     </div></form>
     </div>

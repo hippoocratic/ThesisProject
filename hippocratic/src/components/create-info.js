@@ -67,7 +67,7 @@ export default class CreateInfo extends Component {
     });
   }
   handleClick() {
-    window.location = "/profile";
+    window.location = "/personalDoctor";
   }
   onSubmit(e) {
     e.preventDefault();

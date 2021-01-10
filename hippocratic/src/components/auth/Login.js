@@ -25,13 +25,16 @@ export default function Login() {
         "http://localhost:3000/users/login",
         loginUser
       );
-      console.log(loginRes.data.user)
+      console.log(loginRes.data.user.id)
+      console.log(loginRes.data)
       setUserData({
         token: loginRes.data.token,
         userType: loginRes.data.user.userType,
       });
       localStorage.setItem("auth-token", loginRes.data.token);
       localStorage.setItem("userType", loginRes.data.user.userType);
+      localStorage.setItem("id", loginRes.data.user.id);
+
       history.push("/");
     } catch (err) {
       err.response.data.msg && setError(err.response.data.msg);

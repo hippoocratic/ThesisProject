@@ -23,7 +23,7 @@ export default class EditInfo extends Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:3000/infos/"+this.props.match.params.id)
+      .get("http://localhost:3000/infos/")
       .then(response => {
         this.setState({
           name: response.data.name,
@@ -91,7 +91,7 @@ export default class EditInfo extends Component {
     window.location = "/profile";
   }
   render() {
-    if(localStorage.getItem("auth-token") !== null && ("userType") === ("undefined")) {
+    if(localStorage.getItem("auth-token") !== null && ("userType") !== ("Patient")){
     return (
       <div>
         <h3 className="font-weight-bold deep-purple-text" style={{fontFamily:"Courier"}}>Edit </h3>
