@@ -31,7 +31,19 @@ function Navbar() {
    window.addEventListener('resize', showButton);
 
   return (
-    <>
+  <>
+  <div>
+
+
+
+  
+
+          
+
+
+
+
+    {localStorage.getItem("auth-token") !== null && localStorage.getItem("userType") !== "Patient"? 
       <IconContext.Provider value={{ color: '#fff' }}>
         <nav  className="navbar navbar-expand-lg navbar-light ">
         
@@ -59,50 +71,105 @@ function Navbar() {
                   Contact
                 </Link>
               </li>
+
+              <li className='nav-item'>
+                <Link
+                  to='/create-info'
+                  className='nav-links'
+                  onClick={closeMobileMenu}
+                >
+                  Add
+                </Link>
+              </li>
+              <li className='nav-item'>
+                <Link
+                  to='/personalDoctor'
+                  className='nav-links'
+                  onClick={closeMobileMenu}
+                >
+                  Main Page
+                </Link>
+              </li>
            
-             
-              <li className='nav-btn'>
-                {button ? (
-                  <Link to='/login' className='btn-link'>
-                    <Button buttonStyle='btn--outline'>login</Button>
-                  </Link>
-                ) : (
-                  <Link to='/login' className='btn-link'>
-                    <Button
-                      buttonStyle='btn--outline'
-                      buttonSize='btn--mobile'
-                      onClick={closeMobileMenu}
-                    >
-                      login
-                    </Button>
-                  </Link>
-                )}
-              </li>
-              <li className='nav-btn'>
-                {button ? (
-                  <Link to='/register' className='btn-link'>
-                    <Button buttonStyle='btn--outline'>register</Button>
-                  </Link>
-                ) : (
-                  <Link to='/register' className='btn-link'>
-                    <Button
-                      buttonStyle='btn--outline'
-                      buttonSize='btn--mobile'
-                      onClick={closeMobileMenu}
-                    >
-                      register
-                    </Button>
-                  </Link>
-                )}
-              </li>
+           
+          
+           
 
             </ul>
           </div>
         </nav>
       </IconContext.Provider>
-    </>
+      :
+    
+<IconContext.Provider value={{ color: '#fff' }}>
+  <nav  className="navbar navbar-expand-lg navbar-light ">
+  
+    <div className='container-fluid'>
+    
+      <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+        <BiPlusMedical className='navbar-icon' />
+        Hippocratic
+      </Link>
+      <div className='menu-icon' onClick={handleClick}>
+        {click ? <FaTimes /> : <FaBars />}
+      </div>
+      <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+        <li className='nav-item'>
+          <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+            Home
+          </Link>
+        </li>
+        <li className='nav-item'>
+          <Link
+            to='/Contact'
+            className='nav-links'
+            onClick={closeMobileMenu}
+          >
+            Contact
+          </Link>
+        </li>
+     
+        <li className='nav-item'>
+          <Link
+            to='/doctors'
+            className='nav-links'
+            onClick={closeMobileMenu}
+          >
+            Doctors
+          </Link>
+        </li>
+
+        <li className='nav-item'>
+          <Link
+            to='/profilePage'
+            className='nav-links'
+            onClick={closeMobileMenu}
+          >
+            profilePage
+          </Link>
+        </li>
+
+        <li className='nav-item'>
+          <Link
+            to='/appointment'
+            className='nav-links'
+            onClick={closeMobileMenu}
+          >
+            Booking
+          </Link>
+        </li>
+       
+       
+      </ul>
+    </div>
+  </nav>
+</IconContext.Provider>
+}
+      </div>
+</>
   );
 }
+
 
 export default Navbar;
 

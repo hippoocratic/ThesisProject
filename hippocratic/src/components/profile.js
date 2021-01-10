@@ -4,7 +4,7 @@ import axios from "axios";
 
 
 const InfoInput = props => (
-  <tr>
+<tr>
     <td>{props.input.inputName}</td>
     <td>{props.input.overview}</td>
     <td>{props.input.conferences}</td>
@@ -25,7 +25,7 @@ export default class profile extends Component {
   }
   componentDidMount() {
     axios
-      .get("http://localhost:3000/infos/")
+      .get("http://localhost:3000/infos/:id")
       .then((response) => {
         this.setState({ inputs: response.data });
       })

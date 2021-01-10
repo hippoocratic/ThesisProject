@@ -20,6 +20,7 @@ import AuthOptions from "./components/auth/AuthOptions";
 import doctors from "./components/patient/doctors";
 import AddAppointment from "./components/appointment";
 import profilePage from "./components/patient/profilePage";
+import personalDoctor from './components/personalDoctor';
 
 
 
@@ -77,6 +78,7 @@ export default function App() {
               <Route path="/doctors" component={doctors} />
               <Route path="/appointment" component={AddAppointment}/>
               <Route exact path="/profilePage" component={profilePage} />
+              <Route exact path ="/personalDoctor" component={personalDoctor}/>
             
         
              
